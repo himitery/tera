@@ -164,3 +164,6 @@ _internal_defaults_do_not_set:
   # Refer to https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/#priorityclass
   # for more detail.
   priorityClassName: ""
+
+tls:
+  secretName: ""
