@@ -1,0 +1,27 @@
+apiVersion: v1
+entries:
+  argocd:
+  - apiVersion: v2
+    appVersion: v2.13.1
+    created: "2024-12-06T06:10:36.925677959Z"
+    description: A Helm chart for Argo CD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: 90fbbf335671ae3221434e4f1d68e4e41ac7f75f40bfe3e88ccc916729f537d5
+    home: https://github.com/argoproj/argo-helm
+    icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    kubeVersion: '>=1.25.0-0'
+    maintainers:
+    - name: argoproj
+      url: https://argoproj.github.io/
+    name: argocd
+    sources:
+    - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
+    - https://github.com/argoproj/argo-cd
+    urls:
+    - https://github.com/himitery/tera/releases/download/argocd-7.7.7/argocd-7.7.7.tgz
+    version: 7.7.7
+generated: "2024-12-06T06:10:36.925691644Z"
