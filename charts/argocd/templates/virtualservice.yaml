@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: argocd-virtual-service
+  namespace: {{ include  "argo-cd.namespace" . }}
+spec:
+  hosts:
+    - {{ .Values.global.domain }}
+  gateways:
+    - {{ .Values.gateway.target }}
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: argocd-server.{{ include  "argo-cd.namespace" . }}.svc.cluster.local
+            port:
+              number: 443

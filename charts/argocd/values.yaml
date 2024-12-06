@@ -161,6 +161,9 @@ global:
   # -- Annotations for the all deployed Certificates
   certificateAnnotations: {}
 
+gateway:
+  target: ""
+
 ## Argo Configs
 configs:
   # General Argo CD configuration
