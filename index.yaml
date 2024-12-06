@@ -89,6 +89,59 @@ entries:
     urls:
     - https://github.com/himitery/tera/releases/download/istiod-1.24.1/istiod-1.24.1.tgz
     version: 1.24.1
+  prometheus:
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/prometheus-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/prometheus-operator/kube-prometheus
+      artifacthub.io/operator: "true"
+    apiVersion: v2
+    appVersion: v0.78.2
+    created: "2024-12-06T08:55:53.676285666Z"
+    dependencies:
+    - condition: crds.enabled
+      name: crds
+      repository: ""
+      version: 0.0.0
+    - condition: kubeStateMetrics.enabled
+      name: kube-state-metrics
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 5.27.*
+    - condition: nodeExporter.enabled
+      name: prometheus-node-exporter
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 4.42.*
+    - condition: grafana.enabled
+      name: grafana
+      repository: https://grafana.github.io/helm-charts
+      version: 8.6.*
+    - condition: windowsMonitoring.enabled
+      name: prometheus-windows-exporter
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 0.7.*
+    description: kube-prometheus-stack collects Kubernetes manifests, Grafana dashboards,
+      and Prometheus rules combined with documentation and scripts to provide easy
+      to operate end-to-end Kubernetes cluster monitoring with Prometheus using the
+      Prometheus Operator.
+    digest: 3ee506dd08d6097bfda5e5d3a2ea85f1a8e4ac4d376f25f93dd2f1ced3d66fa7
+    home: https://github.com/prometheus-operator/kube-prometheus
+    icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - prometheus
+    - kube-prometheus
+    kubeVersion: '>=1.19.0-0'
+    name: prometheus
+    sources:
+    - https://github.com/prometheus-community/helm-charts
+    - https://github.com/prometheus-operator/kube-prometheus
+    type: application
+    urls:
+    - https://github.com/himitery/tera/releases/download/prometheus-66.3.1/prometheus-66.3.1.tgz
+    version: 66.3.1
   ztunnel:
   - apiVersion: v2
     appVersion: 1.24.1
@@ -105,4 +158,4 @@ entries:
     urls:
     - https://github.com/himitery/tera/releases/download/ztunnel-1.24.1/ztunnel-1.24.1.tgz
     version: 1.24.1
-generated: "2024-12-06T06:12:20.85593635Z"
+generated: "2024-12-06T08:55:53.676295334Z"
