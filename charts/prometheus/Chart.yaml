@@ -40,24 +40,7 @@ keywords:
 - prometheus
 - kube-prometheus
 kubeVersion: '>=1.19.0-0'
-maintainers:
-- email: andrew@quadcorps.co.uk
-  name: andrewgkew
-- email: gianrubio@gmail.com
-  name: gianrubio
-- email: github.gkarthiks@gmail.com
-  name: gkarthiks
-- email: kube-prometheus-stack@sisti.pt
-  name: GMartinez-Sisti
-- email: github@jkroepke.de
-  name: jkroepke
-- email: scott@r6by.com
-  name: scottrigby
-- email: miroslav.hadzhiev@gmail.com
-  name: Xtigyro
-- email: quentin.bisson@gmail.com
-  name: QuentinBisson
-name: kube-prometheus-stack
+name: prometheus
 sources:
 - https://github.com/prometheus-community/helm-charts
 - https://github.com/prometheus-operator/kube-prometheus
