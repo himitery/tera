@@ -24,4 +24,85 @@ entries:
     urls:
     - https://github.com/himitery/tera/releases/download/argocd-7.7.7/argocd-7.7.7.tgz
     version: 7.7.7
-generated: "2024-12-06T06:10:36.925691644Z"
+  istio-base:
+  - apiVersion: v2
+    appVersion: 1.24.1
+    created: "2024-12-06T06:12:20.195541751Z"
+    description: Helm chart for deploying Istio cluster resources and CRDs
+    digest: d38d51718d0cc3928c0813647023539d329ec52f70418a084e8a42fe61d301dc
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    name: istio-base
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - https://github.com/himitery/tera/releases/download/istio-base-1.24.1/istio-base-1.24.1.tgz
+    version: 1.24.1
+  istio-cni:
+  - apiVersion: v2
+    appVersion: 1.24.1
+    created: "2024-12-06T06:12:20.348375633Z"
+    description: Helm chart for istio-cni components
+    digest: 22683a9e6c25073a602f0fd1e826065c813ac231ebf659bc746f431f882132f3
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-cni
+    - istio
+    name: istio-cni
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - https://github.com/himitery/tera/releases/download/istio-cni-1.24.1/istio-cni-1.24.1.tgz
+    version: 1.24.1
+  istio-gateway:
+  - apiVersion: v2
+    appVersion: 1.24.1
+    created: "2024-12-06T06:12:20.510835032Z"
+    description: Helm chart for deploying Istio gateways
+    digest: c65685189f37a2cd44d7a3ef1e84a72cd97503522bd8a726dafcf753bf28e4fb
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - gateways
+    name: istio-gateway
+    sources:
+    - https://github.com/istio/istio
+    type: application
+    urls:
+    - https://github.com/himitery/tera/releases/download/istio-gateway-1.24.1/istio-gateway-1.24.1.tgz
+    version: 1.24.1
+  istiod:
+  - apiVersion: v2
+    appVersion: 1.24.1
+    created: "2024-12-06T06:12:20.654023614Z"
+    description: Helm chart for istio control plane
+    digest: 35287fed84e9454c9ec64cdf0d6b9b27d64a210d1c4e663b22eb82a7af8a8bf5
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - istiod
+    - istio-discovery
+    name: istiod
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - https://github.com/himitery/tera/releases/download/istiod-1.24.1/istiod-1.24.1.tgz
+    version: 1.24.1
+  ztunnel:
+  - apiVersion: v2
+    appVersion: 1.24.1
+    created: "2024-12-06T06:12:20.855890855Z"
+    description: Helm chart for istio ztunnel components
+    digest: 5bfef0b9781981845fe19d23ca7d430c0a33e00b7a045d3c2015b91b89ecaba9
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio-ztunnel
+    - istio
+    name: ztunnel
+    sources:
+    - https://github.com/istio/istio
+    urls:
+    - https://github.com/himitery/tera/releases/download/ztunnel-1.24.1/ztunnel-1.24.1.tgz
+    version: 1.24.1
+generated: "2024-12-06T06:12:20.85593635Z"
