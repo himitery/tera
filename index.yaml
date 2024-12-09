@@ -89,6 +89,31 @@ entries:
     urls:
     - https://github.com/himitery/tera/releases/download/istiod-1.24.1/istiod-1.24.1.tgz
     version: 1.24.1
+  kiali:
+  - apiVersion: v2
+    appVersion: v2.2.0
+    created: "2024-12-09T00:50:56.704333693Z"
+    description: Kiali is an open source project for service mesh observability, refer
+      to https://www.kiali.io for details.
+    digest: b5b6f5a300bdf9e4700b7619a73ae420d85c79647ef4259a9ccf610b63e8faac
+    home: https://github.com/kiali/kiali-operator
+    icon: https://raw.githubusercontent.com/kiali/kiali.io/current/assets/icons/logo.svg
+    keywords:
+    - istio
+    - kiali
+    - operator
+    maintainers:
+    - email: kiali-users@googlegroups.com
+      name: Kiali
+      url: https://kiali.io
+    name: kiali
+    sources:
+    - https://github.com/kiali/kiali
+    - https://github.com/kiali/kiali-operator
+    - https://github.com/kiali/helm-charts
+    urls:
+    - https://github.com/himitery/tera/releases/download/kiali-2.2.0/kiali-2.2.0.tgz
+    version: 2.2.0
   prometheus:
   - annotations:
       artifacthub.io/license: Apache-2.0
@@ -158,4 +183,4 @@ entries:
     urls:
     - https://github.com/himitery/tera/releases/download/ztunnel-1.24.1/ztunnel-1.24.1.tgz
     version: 1.24.1
-generated: "2024-12-06T08:55:53.676295334Z"
+generated: "2024-12-09T00:50:56.828397106Z"
