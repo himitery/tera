@@ -136,28 +136,6 @@ entries:
     urls:
     - https://github.com/himitery/tera/releases/download/minio-6.0.4/minio-6.0.4.tgz
     version: 6.0.4
-  operator:
-  - apiVersion: v2
-    appVersion: v6.0.4
-    created: "2024-12-09T04:35:58.835086107Z"
-    description: A Helm chart for MinIO Operator
-    digest: 08b3d9474ee097a534104a3d91ec4034bdb307e6a4452bb32c789a6c86659b93
-    home: https://min.io
-    icon: https://min.io/resources/img/logo/MINIO_wordmark.png
-    keywords:
-    - storage
-    - object-storage
-    - S3
-    maintainers:
-    - email: dev@minio.io
-      name: MinIO, Inc
-    name: operator
-    sources:
-    - https://github.com/minio/operator
-    type: application
-    urls:
-    - https://github.com/himitery/tera/releases/download/operator-6.0.4/operator-6.0.4.tgz
-    version: 6.0.4
   prometheus:
   - annotations:
       artifacthub.io/license: Apache-2.0
