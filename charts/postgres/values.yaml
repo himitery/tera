@@ -17,7 +17,7 @@ type: postgresql
 
 version:
   # -- PostgreSQL major version to use
-  postgresql: "16"
+  postgresql: "17.2"
   # -- If using TimescaleDB, specify the version
   timescaledb: "2.15"
   # -- If using PostGIS, specify the version
