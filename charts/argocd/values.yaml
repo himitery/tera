@@ -54,6 +54,9 @@ global:
   # -- Number of old deployment ReplicaSets to retain. The rest will be garbage collected.
   revisionHistoryLimit: 3
 
+  gateway:
+    target: ""
+
   # Default image used by all components
   image:
     # -- If defined, a repository applied to all Argo CD deployments
@@ -160,9 +163,6 @@ global:
 
   # -- Annotations for the all deployed Certificates
   certificateAnnotations: {}
-
-gateway:
-  target: ""
 
 ## Argo Configs
 configs:

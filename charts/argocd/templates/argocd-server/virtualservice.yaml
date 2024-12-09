@@ -7,7 +7,7 @@ spec:
   hosts:
     - {{ .Values.global.domain }}
   gateways:
-    - {{ .Values.gateway.target }}
+    - {{ .Values.global.gateway.target }}
   http:
     - match:
         - uri:
