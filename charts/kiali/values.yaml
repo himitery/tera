@@ -88,6 +88,11 @@ allowAllAccessibleNamespaces: true
 # the default behavior and is not necessary if your Kiali CRs will have `spec.deployment.cluster_wide_access` set to `true`.
 watchesFile: ""
 
+global:
+  domain: ""
+  gateway:
+    target: ""
+
 # For what a Kiali CR spec can look like, see: https://kiali.io/docs/configuration/kialis.kiali.io/
 cr:
   create: true
@@ -105,6 +110,7 @@ cr:
       strategy: "anonymous"
     deployment:
       cluster_wide_access: true
+      instance_name: kiali-server
     external_services:
       prometheus:
         url: ""
