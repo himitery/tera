@@ -114,28 +114,6 @@ entries:
     urls:
     - https://github.com/himitery/tera/releases/download/kiali-2.2.0/kiali-2.2.0.tgz
     version: 2.2.0
-  minio:
-  - apiVersion: v2
-    appVersion: v6.0.4
-    created: "2024-12-09T04:49:17.768448369Z"
-    description: A Helm chart for MinIO
-    digest: d58b795fb86b6b6fb76fa4aa45d43ffa1a51bb3c5226625689962469dbb276eb
-    home: https://min.io
-    icon: https://min.io/resources/img/logo/MINIO_wordmark.png
-    keywords:
-    - storage
-    - object-storage
-    - S3
-    maintainers:
-    - email: dev@minio.io
-      name: MinIO, Inc
-    name: minio
-    sources:
-    - https://github.com/minio/operator
-    type: application
-    urls:
-    - https://github.com/himitery/tera/releases/download/minio-6.0.4/minio-6.0.4.tgz
-    version: 6.0.4
   minio-operator:
   - apiVersion: v2
     appVersion: v6.0.4
