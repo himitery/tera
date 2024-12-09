@@ -114,6 +114,50 @@ entries:
     urls:
     - https://github.com/himitery/tera/releases/download/kiali-2.2.0/kiali-2.2.0.tgz
     version: 2.2.0
+  minio:
+  - apiVersion: v2
+    appVersion: v6.0.4
+    created: "2024-12-09T04:49:17.768448369Z"
+    description: A Helm chart for MinIO
+    digest: d58b795fb86b6b6fb76fa4aa45d43ffa1a51bb3c5226625689962469dbb276eb
+    home: https://min.io
+    icon: https://min.io/resources/img/logo/MINIO_wordmark.png
+    keywords:
+    - storage
+    - object-storage
+    - S3
+    maintainers:
+    - email: dev@minio.io
+      name: MinIO, Inc
+    name: minio
+    sources:
+    - https://github.com/minio/operator
+    type: application
+    urls:
+    - https://github.com/himitery/tera/releases/download/minio-6.0.4/minio-6.0.4.tgz
+    version: 6.0.4
+  minio-operator:
+  - apiVersion: v2
+    appVersion: v6.0.4
+    created: "2024-12-09T04:49:17.863790388Z"
+    description: A Helm chart for MinIO Operator
+    digest: 363365fd7095e13b1933a895b4d9bba7a72fdfca329540c65191013d62776e26
+    home: https://min.io
+    icon: https://min.io/resources/img/logo/MINIO_wordmark.png
+    keywords:
+    - storage
+    - object-storage
+    - S3
+    maintainers:
+    - email: dev@minio.io
+      name: MinIO, Inc
+    name: minio-operator
+    sources:
+    - https://github.com/minio/operator
+    type: application
+    urls:
+    - https://github.com/himitery/tera/releases/download/minio-operator-6.0.4/minio-operator-6.0.4.tgz
+    version: 6.0.4
   prometheus:
   - annotations:
       artifacthub.io/license: Apache-2.0
@@ -183,4 +227,4 @@ entries:
     urls:
     - https://github.com/himitery/tera/releases/download/ztunnel-1.24.1/ztunnel-1.24.1.tgz
     version: 1.24.1
-generated: "2024-12-09T04:35:58.83509833Z"
+generated: "2024-12-09T04:49:17.863816337Z"
