@@ -4,18 +4,17 @@ description: A Helm chart for MinIO
 home: https://min.io
 icon: https://min.io/resources/img/logo/MINIO_wordmark.png
 keywords:
-- storage
-- object-storage
-- S3
+  - storage
+  - object-storage
+  - S3
 maintainers:
-- email: dev@minio.io
-  name: MinIO, Inc
+  - email: dev@minio.io
+    name: MinIO, Inc
 name: minio
 sources:
-- https://github.com/minio/operator
+  - https://github.com/minio/operator
 type: application
 version: 6.0.4
 dependencies:
   - name: minio-operator
     version: 6.0.4
-    repository: https://himitery.github.io/tera
