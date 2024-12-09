@@ -14,6 +14,6 @@ spec:
             prefix: /
       route:
         - destination:
-            host: {{ .Values.tenant.name }}.{{ .Release.Namespace }}.svc.cluster.local
+            host: {{ .Values.tenant.name }}-console.{{ .Release.Namespace }}.svc.cluster.local
             port:
-              number: 20001
+              number: 9443

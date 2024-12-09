@@ -1,0 +1,13 @@
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: minio-destination-rule
+  namespace: {{ .Release.Namespace }}
+spec:
+  host: {{ .Values.tenant.name }}-console.{{ .Release.Namespace }}.svc.cluster.local
+  trafficPolicy:
+    portLevelSettings:
+      - port:
+          number: 9443
+        tls:
+          mode: SIMPLE
