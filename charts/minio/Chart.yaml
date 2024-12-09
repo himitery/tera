@@ -15,3 +15,7 @@ sources:
 - https://github.com/minio/operator
 type: application
 version: 6.0.4
+dependencies:
+  - name: minio-operator
+    version: 6.0.4
+    repository: https://himitery.github.io/tera
