@@ -140,6 +140,31 @@ entries:
     urls:
     - https://github.com/himitery/tera/releases/download/minio-6.0.4/minio-6.0.4.tgz
     version: 6.0.4
+  postgres:
+  - apiVersion: v2
+    created: "2024-12-09T07:57:19.841962889Z"
+    dependencies:
+    - name: postgres-operator
+      repository: ""
+      version: 0.22.1
+    description: Deploys and manages a CloudNativePG cluster and its associated resources.
+    digest: af53a1a901ce24ccdbe96cb20b8f1f5699179c1437b08b5669547895ac96e9bf
+    home: https://cloudnative-pg.io
+    icon: https://raw.githubusercontent.com/cloudnative-pg/artwork/main/cloudnativepg-logo.svg
+    keywords:
+    - postgresql
+    - postgres
+    - database
+    maintainers:
+    - email: itay+cloudnativepg-charts+github.com@grudev.com
+      name: itay-grudev
+    name: postgres
+    sources:
+    - https://github.com/cloudnative-pg/charts
+    type: application
+    urls:
+    - https://github.com/himitery/tera/releases/download/postgres-0.1.1/postgres-0.1.1.tgz
+    version: 0.1.1
   prometheus:
   - annotations:
       artifacthub.io/license: Apache-2.0
@@ -209,4 +234,4 @@ entries:
     urls:
     - https://github.com/himitery/tera/releases/download/ztunnel-1.24.1/ztunnel-1.24.1.tgz
     version: 1.24.1
-generated: "2024-12-09T05:10:30.34910289Z"
+generated: "2024-12-09T07:57:19.84197416Z"
