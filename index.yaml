@@ -167,6 +167,28 @@ entries:
     urls:
     - https://github.com/himitery/tera/releases/download/prometheus-66.3.1/prometheus-66.3.1.tgz
     version: 66.3.1
+  tenant:
+  - apiVersion: v2
+    appVersion: v6.0.4
+    created: "2024-12-09T04:09:27.065757718Z"
+    description: A Helm chart for MinIO Operator
+    digest: f91868b86f57da93ccb5a2b95beb93d2dce50456ee2232e78215e60ab45ca0f2
+    home: https://min.io
+    icon: https://min.io/resources/img/logo/MINIO_wordmark.png
+    keywords:
+    - storage
+    - object-storage
+    - S3
+    maintainers:
+    - email: dev@minio.io
+      name: MinIO, Inc
+    name: tenant
+    sources:
+    - https://github.com/minio/operator
+    type: application
+    urls:
+    - https://github.com/himitery/tera/releases/download/tenant-6.0.4/tenant-6.0.4.tgz
+    version: 6.0.4
   ztunnel:
   - apiVersion: v2
     appVersion: 1.24.1
@@ -183,4 +205,4 @@ entries:
     urls:
     - https://github.com/himitery/tera/releases/download/ztunnel-1.24.1/ztunnel-1.24.1.tgz
     version: 1.24.1
-generated: "2024-12-09T00:50:56.828397106Z"
+generated: "2024-12-09T04:09:27.065769269Z"
