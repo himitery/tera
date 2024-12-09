@@ -1,6 +1,6 @@
 apiVersion: v2
 appVersion: v6.0.4
-description: A Helm chart for MinIO Operator
+description: A Helm chart for MinIO
 home: https://min.io
 icon: https://min.io/resources/img/logo/MINIO_wordmark.png
 keywords:
@@ -10,7 +10,7 @@ keywords:
 maintainers:
 - email: dev@minio.io
   name: MinIO, Inc
-name: tenant
+name: minio
 sources:
 - https://github.com/minio/operator
 type: application
