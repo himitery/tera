@@ -55,10 +55,18 @@ _internal_defaults_do_not_set:
       port: 443
       protocol: TCP
       targetPort: 443
-    - name: tcp
-      port: 8080
+    - name: tcp-ssh
+      port: 22
       protocol: TCP
-      targetPort: 8080
+      targetPort: 22
+    - name: tcp-postgres
+      port: 5432
+      protocol: TCP
+      targetPort: 5432
+    - name: tcp-redis
+      port: 6379
+      protocol: TCP
+      targetPort: 6379
     annotations: {}
     loadBalancerIP: ""
     loadBalancerSourceRanges: []

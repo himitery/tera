@@ -8,7 +8,7 @@ spec:
     - {{ printf "kas.%s" .Values.global.hosts.domain }}
   gateways:
     - {{ .Values.global.gateway.target }}
-  tcp:
+  http:
     - route:
         - destination:
             host: gitlab-kas.{{ .Release.Namespace }}.svc.cluster.local

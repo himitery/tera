@@ -8,7 +8,7 @@ spec:
     - {{ printf "gitlab.%s" .Values.global.hosts.domain }}
   gateways:
     - {{ .Values.global.gateway.target }}
-  tcp:
+  http:
     - route:
         - destination:
             host: gitlab-webservice-default.{{ .Release.Namespace }}.svc.cluster.local

@@ -9,7 +9,9 @@ spec:
   gateways:
     - {{ .Values.global.gateway.target }}
   tcp:
-    - route:
+    - match:
+        - port: 5432
+      route:
       - destination:
           host: {{ include "cloudnative-pg.fullname" . }}-rw.{{ .Release.Namespace }}.svc.cluster.local
           port:
