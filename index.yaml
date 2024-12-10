@@ -218,6 +218,43 @@ entries:
     urls:
     - https://github.com/himitery/tera/releases/download/prometheus-66.3.1/prometheus-66.3.1.tgz
     version: 66.3.1
+  redis:
+  - annotations:
+      category: Database
+      images: |
+        - name: os-shell
+          image: docker.io/bitnami/os-shell:12-debian-12-r33
+        - name: redis-cluster
+          image: docker.io/bitnami/redis-cluster:7.4.1-debian-12-r2
+        - name: redis-exporter
+          image: docker.io/bitnami/redis-exporter:1.66.0-debian-12-r2
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 7.4.1
+    created: "2024-12-10T04:42:25.914884702Z"
+    dependencies:
+    - name: common
+      repository: ""
+      version: 2.x.x
+    description: Redis(R) is an open source, scalable, distributed in-memory cache
+      for applications. It can be used to store and serve data in the form of strings,
+      hashes, lists, sets and sorted sets.
+    digest: ca550a4821aa5e1e8ff458fbf0448424ca6059707afdecca26f287ca737f4564
+    home: https://bitnami.com
+    icon: https://bitnami.com/assets/stacks/redis/img/redis-stack-220x234.png
+    keywords:
+    - redis
+    - keyvalue
+    - database
+    maintainers:
+    - name: Broadcom, Inc. All Rights Reserved.
+      url: https://github.com/bitnami/charts
+    name: redis
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/redis-cluster
+    urls:
+    - https://github.com/himitery/tera/releases/download/redis-11.1.0/redis-11.1.0.tgz
+    version: 11.1.0
   ztunnel:
   - apiVersion: v2
     appVersion: 1.24.1
@@ -234,4 +271,4 @@ entries:
     urls:
     - https://github.com/himitery/tera/releases/download/ztunnel-1.24.1/ztunnel-1.24.1.tgz
     version: 1.24.1
-generated: "2024-12-09T07:57:19.84197416Z"
+generated: "2024-12-10T04:42:25.914896193Z"
