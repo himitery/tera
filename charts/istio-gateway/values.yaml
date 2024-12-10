@@ -67,6 +67,10 @@ _internal_defaults_do_not_set:
       port: 6379
       protocol: TCP
       targetPort: 6379
+    - name: tcp-redis-headless
+      port: 16379
+      protocol: TCP
+      targetPort: 16379
     annotations: {}
     loadBalancerIP: ""
     loadBalancerSourceRanges: []

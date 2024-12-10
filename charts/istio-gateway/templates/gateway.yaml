@@ -42,3 +42,9 @@ spec:
         protocol: TCP
       hosts:
         - "*"
+    - port:
+        number: 16379
+        name: tcp-redis-headless
+        protocol: TCP
+      hosts:
+        - "*"
