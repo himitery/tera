@@ -24,6 +24,44 @@ entries:
     urls:
     - https://github.com/himitery/tera/releases/download/argocd-7.7.7/argocd-7.7.7.tgz
     version: 7.7.7
+  gitlab:
+  - apiVersion: v1
+    appVersion: v17.6.1
+    created: "2024-12-10T05:39:18.822247787Z"
+    dependencies:
+    - name: gitlab
+      repository: ""
+      version: '*.*.*'
+    - name: registry
+      repository: ""
+      version: '*.*.*'
+    - condition: gitlab-runner.install
+      name: gitlab-runner
+      repository: https://charts.gitlab.io/
+      version: 0.71.0
+    - condition: gitlab-zoekt.install
+      name: gitlab-zoekt
+      repository: https://charts.gitlab.io/
+      version: 1.4.2
+    - condition: traefik.install
+      name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 10.19.4
+    description: GitLab is the most comprehensive AI-powered DevSecOps Platform.
+    digest: 3463194d728f05982a153e9f8e9ba1a0aded50e5b88390c48f7e5f4bb1ec9382
+    home: https://about.gitlab.com/
+    icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
+    keywords:
+    - gitlab
+    maintainers:
+    - email: support@gitlab.com
+      name: GitLab Inc.
+    name: gitlab
+    sources:
+    - https://gitlab.com/gitlab-org/charts/gitlab
+    urls:
+    - https://github.com/himitery/tera/releases/download/gitlab-8.6.1/gitlab-8.6.1.tgz
+    version: 8.6.1
   istio-base:
   - apiVersion: v2
     appVersion: 1.24.1
@@ -271,4 +309,4 @@ entries:
     urls:
     - https://github.com/himitery/tera/releases/download/ztunnel-1.24.1/ztunnel-1.24.1.tgz
     version: 1.24.1
-generated: "2024-12-10T04:42:25.914896193Z"
+generated: "2024-12-10T05:39:18.915580365Z"
