@@ -28,7 +28,9 @@ global:
     labels: {}
 
   gateway:
-    target: ""
+    target:
+      http: ""
+      tcp: ""
 
   image: {}
     # Registry value override is only available for the following Charts:

@@ -7,7 +7,7 @@ spec:
   hosts:
     - {{ printf "gitlab.%s" .Values.global.hosts.domain }}
   gateways:
-    - {{ .Values.global.gateway.target }}
+    - {{ .Values.global.gateway.target.http }}
   tcp:
     - route:
         - destination:
