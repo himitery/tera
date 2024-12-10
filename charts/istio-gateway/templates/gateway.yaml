@@ -24,16 +24,6 @@ spec:
         credentialName: {{ .Values.tls.secretName }}
       hosts:
         - "*"
----
-apiVersion: networking.istio.io/v1
-kind: Gateway
-metadata:
-  name: istio-tcp-gateway
-  namespace: {{ .Release.Namespace }}
-spec:
-  selector:
-    istio: tcp-ingress
-  servers:
     - port:
         number: 8080
         name: tcp

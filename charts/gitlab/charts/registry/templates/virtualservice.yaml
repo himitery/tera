@@ -7,7 +7,7 @@ spec:
   hosts:
     - {{ printf "registry.%s" .Values.global.hosts.domain }}
   gateways:
-    - {{ .Values.global.gateway.target.http }}
+    - {{ .Values.global.gateway.target }}
   tcp:
     - route:
         - destination:
