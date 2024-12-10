@@ -1,0 +1,17 @@
+dependencies:
+- name: gitlab
+  version: '*.*.*'
+- name: registry
+  version: '*.*.*'
+- name: gitlab-runner
+  version: 0.71.0
+  repository: https://charts.gitlab.io/
+  condition: gitlab-runner.install
+- name: gitlab-zoekt
+  version: 1.4.2
+  repository: https://charts.gitlab.io/
+  condition: gitlab-zoekt.install
+- name: traefik
+  repository: https://helm.traefik.io/traefik
+  condition: traefik.install
+  version: 10.19.4
