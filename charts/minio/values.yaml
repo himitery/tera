@@ -1,5 +1,7 @@
 global:
-  domain: ""
+  domain:
+    minio: ""
+    console: ""
   gateway:
     target: ""
 

@@ -5,7 +5,27 @@ metadata:
   namespace: {{ .Release.Namespace }}
 spec:
   hosts:
-    - {{ .Values.global.domain }}
+    - {{ .Values.global.domain.minio }}
+  gateways:
+    - {{ .Values.global.gateway.target }}
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: {{ .Values.tenant.name }}.{{ .Release.Namespace }}.svc.cluster.local
+            port:
+              number: 443
+---
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: minio-console-virtual-service
+  namespace: {{ .Release.Namespace }}
+spec:
+  hosts:
+    - {{ .Values.global.domain.console }}
   gateways:
     - {{ .Values.global.gateway.target }}
   http:
