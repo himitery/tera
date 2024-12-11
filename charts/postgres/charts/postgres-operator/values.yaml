@@ -26,8 +26,8 @@ image:
   tag: ""
 
 imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
+nameOverride: postgres-operator
+fullnameOverride: postgres-operator
 
 hostNetwork: false
 dnsPolicy: ""
