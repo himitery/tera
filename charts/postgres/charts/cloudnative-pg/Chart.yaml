@@ -12,7 +12,7 @@ keywords:
 maintainers:
 - email: p.scorsolini@gmail.com
   name: phisco
-name: postgres-operator
+name: cloudnative-pg
 sources:
 - https://github.com/cloudnative-pg/charts
 type: application

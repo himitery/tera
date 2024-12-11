@@ -26,8 +26,8 @@ image:
   tag: ""
 
 imagePullSecrets: []
-nameOverride: cloudnative-pg
-fullnameOverride: cloudnative-pg
+nameOverride: ""
+fullnameOverride: ""
 
 hostNetwork: false
 dnsPolicy: ""
