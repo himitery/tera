@@ -4,6 +4,20 @@ metadata:
   name: minio-destination-rule
   namespace: {{ .Release.Namespace }}
 spec:
+  host: {{ .Values.tenant.name }}.{{ .Release.Namespace }}.svc.cluster.local
+  trafficPolicy:
+    portLevelSettings:
+      - port:
+          number: 443
+        tls:
+          mode: SIMPLE
+---
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: minio-console-destination-rule
+  namespace: {{ .Release.Namespace }}
+spec:
   host: {{ .Values.tenant.name }}-console.{{ .Release.Namespace }}.svc.cluster.local
   trafficPolicy:
     portLevelSettings:
