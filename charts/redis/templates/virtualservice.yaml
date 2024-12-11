@@ -16,10 +16,3 @@ spec:
             host: {{ template "common.names.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local
             port:
               number: 6379
-    - match:
-        - port: 16379
-      route:
-        - destination:
-            host: {{ template "common.names.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local
-            port:
-              number: 16379
