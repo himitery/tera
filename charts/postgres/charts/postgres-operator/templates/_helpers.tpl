@@ -46,7 +46,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 Selector labels
 */}}
 {{- define "cloudnative-pg.selectorLabels" -}}
-app.kubernetes.io/name: cloudnative-pg
+app.kubernetes.io/name: postgres-operator
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
