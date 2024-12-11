@@ -148,6 +148,10 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
+            - name: REDIS_CLUSTER_ANNOUNCE_HOSTNAME
+              value: {{ .Values.global.domain }}
+            - name: REDIS_CLUSTER_PREFERRED_ENDPOINT_TYPE
+              value: hostname
             {{- if and .Values.cluster.externalAccess.enabled .Values.cluster.externalAccess.hostMode }}
             - name: REDIS_CLUSTER_DYNAMIC_IPS
               value: "yes"
