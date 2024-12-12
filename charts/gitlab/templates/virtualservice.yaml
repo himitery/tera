@@ -35,7 +35,7 @@ spec:
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
-  name: gitlab-virtual-service
+  name: gitlab-shell-virtual-service
   namespace: {{ .Release.Namespace }}
 spec:
   hosts:
@@ -49,7 +49,7 @@ spec:
         - destination:
             host: gitlab-gitlab-shell.{{ .Release.Namespace }}.svc.cluster.local
             port:
-              number: 22
+              number: 2222
 ---
 apiVersion: networking.istio.io/v1
 kind: VirtualService
