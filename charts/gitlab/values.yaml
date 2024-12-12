@@ -166,6 +166,8 @@ global:
 
   ## https://docs.gitlab.com/charts/charts/globals#configure-redis-settings
   redis:
+    host: 127.0.0.1
+    port: 6379
     auth:
       enabled: true
       # secret:
@@ -928,10 +930,8 @@ upgradeCheck:
   priorityClassName: ""
 
 ## Settings to for the Let's Encrypt ACME Issuer
-# certmanager-issuer:
-#   # The email address to register certificates requested from Let's Encrypt.
-#   # Required if using Let's Encrypt.
-#   email: email@example.com
+certmanager-issuer:
+  email: email@example.com
 
 ## Installation & configuration of jetstack/cert-manager
 ## See requirements.yaml for current version
