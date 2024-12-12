@@ -53,20 +53,11 @@ Due to gotpl scoping, we can't make use of `range`, so we have to add action lin
 {{- $messages = append $messages (include "gitlab.checkConfig.praefect.storageNames" .) -}}
 {{- $messages = append $messages (include "gitlab.checkConfig.praefect.defaultReplicationFactor" .) -}}
 
-{{/* _checkConfig_ingress.tpl*/}}
-{{- $messages = append $messages (include "gitlab.checkConfig.ingress.alternatives" .) -}}
-{{- $messages = append $messages (include "gitlab.checkConfig.ingress.class" .) -}}
-
-{{/* _checkConfig_nginx.tpl*/}}
-{{- $messages = append $messages (include "gitlab.checkConfig.nginx.controller.extraArgs" .) -}}
-{{- $messages = append $messages (include "gitlab.checkConfig.nginx.clusterrole.scope" .) -}}
-
 {{/* _checkConfig_object_storage.tpl*/}}
 {{- $messages = append $messages (include "gitlab.checkConfig.objectStorage.consolidatedConfig" .) -}}
 {{- $messages = append $messages (include "gitlab.checkConfig.objectStorage.typeSpecificConfig" .) -}}
 
 {{/* _checkConfig_postgresql.tpl*/}}
-{{- $messages = append $messages (include "gitlab.checkConfig.postgresql.deprecatedVersion" .) -}}
 {{- $messages = append $messages (include "gitlab.checkConfig.postgresql.noPasswordFile" .) -}}
 {{- $messages = append $messages (include "gitlab.checkConfig.database.externalLoadBalancing" .) -}}
 
@@ -137,10 +128,6 @@ Ensure that `redis.install: false` if configuring multiple Redis instances
 {{-     $_ := set $x "count" ( add1 $x.count ) -}}
 {{-    end -}}
 {{- end -}}
-{{- if and .Values.redis.install ( lt 0 $x.count ) }}
-redis:
-  If configuring multiple Redis servers, you can not use the in-chart Redis server. Please see https://docs.gitlab.com/charts/charts/globals#configure-redis-settings
-{{- end -}}
 {{- end -}}
 {{/* END gitlab.checkConfig.multipleRedis */}}
 
@@ -148,10 +135,6 @@ redis:
 Ensure that `redis.install: false` if using redis.yml override
 */}}
 {{- define "gitlab.checkConfig.redisYmlOverride" -}}
-{{- if and .Values.redis.install ( hasKey .Values.global.redis "redisYmlOverride" ) }}
-redis:
-  When you override redis.yml you can not use the in-chart Redis server. Please see https://docs.gitlab.com/charts/charts/globals#configure-redis-settings
-{{- end -}}
 {{- end -}}
 {{/* END gitlab.checkConfig.redisYmlOverride */}}
 
@@ -159,10 +142,6 @@ redis:
 Ensure that `global.redis.host: <hostname>` is present if `redis.install: false`
 */}}
 {{- define "gitlab.checkConfig.hostWhenNoInstall" -}}
-{{-   if and (not .Values.redis.install) (empty .Values.global.redis.host) (empty .Values.global.redis.redisYmlOverride) }}
-redis:
-  You've disabled the installation of Redis. When using an external Redis, you must populate `global.redis.host` or `gitlab.redis.redisYmlOverride`. Please see https://docs.gitlab.com/charts/advanced/external-redis/
-{{-   end -}}
 {{- end -}}
 {{/* END gitlab.checkConfig.hostWhenNoInstall */}}
 

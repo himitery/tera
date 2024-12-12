@@ -34,13 +34,6 @@ registry:
     Valid values are: {{ join ", " $validSSLModes }}.
     See https://docs.gitlab.com/charts/charts/registry#database
 {{-     end -}}
-{{-     $pgVersion := semver (.Values.postgresql.image.tag | toString) -}}
-{{-     if lt $pgVersion.Major 13 -}}
-registry:
-    Invalid PostgreSQL version "{{ .Values.postgresql.image.tag }}".
-    PostgreSQL 13 is the minimum required version for the registry database.
-    See https://docs.gitlab.com/charts/charts/registry#database
-{{-     end -}}
 {{-   end -}}
 {{- end -}}
 {{/* END gitlab.checkConfig.registry.database */}}

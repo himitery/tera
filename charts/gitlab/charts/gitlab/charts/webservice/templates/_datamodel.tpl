@@ -14,8 +14,6 @@ item, ensuring presence of all keys.
 {{/* make sure we always have at least one */}}
 {{- if not $.Values.deployments -}}
 {{-   $blank := fromYaml (include "webservice.datamodel.blank" $) -}}
-{{-   $_ := set $blank.ingress "path" (coalesce $.Values.ingress.path $.Values.global.ingress.path) -}}
-{{-   $_ := set $blank.extraIngress "path" (coalesce $.Values.extraIngress.path $.Values.global.ingress.path) -}}
 {{-   $_ := set $.Values "deployments" (dict "default" (dict)) -}}
 {{-   $_ := set $.Values.deployments "default" $blank -}}
 {{- end -}}
@@ -29,12 +27,6 @@ item, ensuring presence of all keys.
 {{-   $_ := set $filledValues "name" $deployment -}}
 {{-   $_ := set $filledValues "fullname" $fullname -}}
 {{-   $_ := set $.Values.deployments $deployment $filledValues -}}
-{{-   if has ($filledValues.ingress.path | toString ) (list "/" "/*") -}}
-{{-     $_ := set $checks "hasBasePath" true -}}
-{{-   end -}}
-{{- end -}}
-{{- if and (not $.Values.ingress.requireBaseBath) (not $checks.hasBasePath) -}}
-{{-   fail "FATAL: Webservice: no deployment with ingress.path '/' or '/*' specified." -}}
 {{- end -}}
 {{- end -}}
 

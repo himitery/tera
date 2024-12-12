@@ -1,16 +1,4 @@
 {{/*
-Ensure that `postgresql.image.tag` meets current requirements
-*/}}
-{{- define "gitlab.checkConfig.postgresql.deprecatedVersion" -}}
-{{- $pgVersion := semver (.Values.postgresql.image.tag | toString) -}}
-{{-   if lt $pgVersion.Major 13  -}}
-  PostgreSQL 12 and earlier are not supported in GitLab 16. The minimum required version is PostgreSQL 13.
-{{-   end -}}
-{{- end -}}
-{{/* END gitlab.checkConfig.postgresql.deprecatedVersion */}}
-
-
-{{/*
 Ensure that if `psql.password.useSecret` is set to false, a path to the password file is provided
 */}}
 {{- define "gitlab.checkConfig.postgresql.noPasswordFile" -}}
