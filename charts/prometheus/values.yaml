@@ -3980,7 +3980,96 @@ prometheus:
     ## The scrape configuration example below will find master nodes, provided they have the name .*mst.*, relabel the
     ## port to 2379 and allow etcd scraping provided it is running on all Kubernetes master nodes
     ##
-    additionalScrapeConfigs: []
+    additionalScrapeConfigs:
+      - job_name: "prometheus"
+        static_configs:
+          - targets: [ "localhost:9090" ]
+
+      - job_name: "istio-envoy"
+        metrics_path: /stats/prometheus
+        kubernetes_sd_configs:
+          - role: pod
+        relabel_configs:
+          - source_labels: [ __meta_kubernetes_pod_container_name ]
+            regex: istio-proxy
+            action: keep
+
+      - job_name: "istio-telemetry"
+        metrics_path: /metrics
+        kubernetes_sd_configs:
+          - role: pod
+        relabel_configs:
+          - source_labels: [ __meta_kubernetes_pod_container_name ]
+            regex: istio-telemetry
+            action: keep
+
+      - job_name: "kubernetes-pods"
+        kubernetes_sd_configs:
+          - role: pod
+        relabel_configs:
+          - source_labels:
+              [ __meta_kubernetes_pod_annotation_prometheus_io_scrape ]
+            action: keep
+            regex: true
+          - source_labels: [ __meta_kubernetes_pod_annotation_prometheus_io_path ]
+            action: replace
+            target_label: __metrics_path__
+            regex: (.+)
+          - source_labels:
+              [ __address__, __meta_kubernetes_pod_annotation_prometheus_io_port ]
+            action: replace
+            target_label: __address__
+            regex: (.+):(.+)
+
+      - job_name: "kubernetes-service-endpoints"
+        kubernetes_sd_configs:
+          - role: endpoints
+        relabel_configs:
+          - source_labels:
+              [ __meta_kubernetes_service_annotation_prometheus_io_scrape ]
+            action: keep
+            regex: true
+          - source_labels:
+              [ __meta_kubernetes_service_annotation_prometheus_io_path ]
+            action: replace
+            target_label: __metrics_path__
+            regex: (.+)
+          - source_labels:
+              [
+                __address__,
+                __meta_kubernetes_service_annotation_prometheus_io_port,
+              ]
+            action: replace
+            target_label: __address__
+            regex: (.+):(.+)
+
+      # Istio-specific scrape configurations
+      - job_name: "pilot"
+        kubernetes_sd_configs:
+          - role: pod
+        metrics_path: /metrics
+        relabel_configs:
+          - source_labels: [ __meta_kubernetes_pod_container_name ]
+            regex: discovery
+            action: keep
+
+      - job_name: "galley"
+        kubernetes_sd_configs:
+          - role: pod
+        metrics_path: /metrics
+        relabel_configs:
+          - source_labels: [ __meta_kubernetes_pod_container_name ]
+            regex: galley
+            action: keep
+
+      - job_name: "istiod"
+        kubernetes_sd_configs:
+          - role: pod
+        metrics_path: /metrics
+        relabel_configs:
+          - source_labels: [ __meta_kubernetes_pod_label_istio ]
+            regex: control-plane
+            action: keep
     # - job_name: kube-etcd
     #   kubernetes_sd_configs:
     #     - role: node
