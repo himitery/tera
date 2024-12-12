@@ -160,6 +160,10 @@ spec:
           env:
             - name: BITNAMI_DEBUG
               value: {{ ternary "true" "false" (or .Values.image.debug .Values.diagnosticMode.enabled) | quote }}
+            - name: KAFKA_CFG_ADVERTISED_LISTENERS
+              value: PLAINTEXT://{{ .Values.global.domain }}:9092
+            - name: KAFKA_CFG_LISTENERS
+              value: PLAINTEXT://:9092
             - name: KAFKA_HEAP_OPTS
               value: {{ coalesce .Values.controller.heapOpts .Values.heapOpts | quote }}
             - name: KAFKA_KRAFT_CLUSTER_ID
