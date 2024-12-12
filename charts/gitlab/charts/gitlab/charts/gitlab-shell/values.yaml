@@ -9,7 +9,7 @@ image:
 service:
   name: gitlab-shell
   type: ClusterIP
-  internalPort: 2222
+  internalPort: 22
   externalTrafficPolicy: Cluster
   # nodePort: xxx
   # allocateLoadBalancerNodePorts: true

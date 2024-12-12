@@ -993,7 +993,7 @@ traefik:
   ports:
     gitlab-shell:
       expose: true
-      port: 2222
+      port: 22
       exposedPort: 22
 
 ## Settings for individual sub-charts under GitLab

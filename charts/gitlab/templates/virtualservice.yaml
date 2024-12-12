@@ -47,7 +47,7 @@ spec:
         - port: 22
       route:
         - destination:
-            host: gitlab-shell.{{ .Release.Namespace }}.svc.cluster.local
+            host: gitlab-gitlab-shell.{{ .Release.Namespace }}.svc.cluster.local
             port:
               number: 22
 ---
@@ -64,6 +64,6 @@ spec:
   http:
     - route:
         - destination:
-            host: registry.{{ .Release.Namespace }}.svc.cluster.local
+            host: gitlab-registry.{{ .Release.Namespace }}.svc.cluster.local
             port:
               number: 5000
