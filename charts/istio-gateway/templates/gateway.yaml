@@ -42,3 +42,9 @@ spec:
         protocol: TCP
       hosts:
         - "*"
+    - port:
+        number: 9092
+        name: tcp-kafka
+        protocol: TCP
+      hosts:
+        - "*"

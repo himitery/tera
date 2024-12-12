@@ -67,6 +67,10 @@ _internal_defaults_do_not_set:
       port: 6379
       protocol: TCP
       targetPort: 6379
+    - name: tcp-kafka
+      port: 9092
+      protocol: TCP
+      targetPort: 9092
     annotations: {}
     loadBalancerIP: ""
     loadBalancerSourceRanges: []
