@@ -1,0 +1,69 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: gitlab-virtual-service
+  namespace: {{ .Release.Namespace }}
+spec:
+  hosts:
+    - {{ printf "gitlab.%s" .Values.global.hosts.domain }}
+  gateways:
+    - {{ .Values.global.gateway.target }}
+  http:
+    - route:
+        - destination:
+            host: gitlab-webservice-default.{{ .Release.Namespace }}.svc.cluster.local
+            port:
+              number: 8181
+---
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: gitlab-kas-virtual-service
+  namespace: {{ .Release.Namespace }}
+spec:
+  hosts:
+    - {{ printf "kas.%s" .Values.global.hosts.domain }}
+  gateways:
+    - {{ .Values.global.gateway.target }}
+  http:
+    - route:
+        - destination:
+            host: gitlab-kas.{{ .Release.Namespace }}.svc.cluster.local
+            port:
+              number: 8154
+---
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: gitlab-virtual-service
+  namespace: {{ .Release.Namespace }}
+spec:
+  hosts:
+    - {{ printf "gitlab.%s" .Values.global.hosts.domain }}
+  gateways:
+    - {{ .Values.global.gateway.target }}
+  tcp:
+    - match:
+        - port: 22
+      route:
+        - destination:
+            host: gitlab-shell.{{ .Release.Namespace }}.svc.cluster.local
+            port:
+              number: 22
+---
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: gitlab-registry-virtual-service
+  namespace: {{ .Release.Namespace }}
+spec:
+  hosts:
+    - {{ printf "registry.%s" .Values.global.hosts.domain }}
+  gateways:
+    - {{ .Values.global.gateway.target }}
+  http:
+    - route:
+        - destination:
+            host: registry.{{ .Release.Namespace }}.svc.cluster.local
+            port:
+              number: 5000
