@@ -113,8 +113,6 @@ global:
 
   ## https://docs.gitlab.com/charts/charts/globals#configure-redis-settings
   redis:
-    host: 127.0.0.1
-    port: 6379
     auth:
       enabled: true
       # secret:
@@ -896,6 +894,25 @@ registry:
   storage:
     secret: ""
     key: ""
+
+## Configuration of Redis
+## https://docs.gitlab.com/charts/architecture/decisions#redis
+## https://docs.gitlab.com/charts/installation/deployment.html#redis
+redis:
+  install: true
+  image:
+    tag: "6.2.16-debian-12-r1"
+  auth:
+    existingSecret: gitlab-redis-secret
+    existingSecretKey: redis-password
+    usePasswordFiles: true
+  architecture: standalone
+  cluster:
+    enabled: true
+  metrics:
+    enabled: true
+    image:
+      tag: "1.46.0-debian-11-r8"
 
 ## Automatic shared secret generation
 ## https://docs.gitlab.com/charts/installation/secrets

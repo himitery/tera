@@ -7,6 +7,10 @@ dependencies:
   version: 0.71.0
   repository: https://charts.gitlab.io/
   condition: gitlab-runner.install
+- name: redis
+  version: 16.13.2
+  repository: https://charts.bitnami.com/bitnami
+  condition: redis.install
 - name: gitlab-zoekt
   version: 1.4.2
   repository: https://charts.gitlab.io/
