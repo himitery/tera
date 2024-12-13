@@ -477,7 +477,7 @@ Returns the list of advertised listeners, although the advertised address will b
 {{- if .Values.listeners.advertisedListeners -}}
   {{- printf "%s" .Values.listeners.advertisedListeners -}}
 {{- else -}}
-  {{- $listeners := list .Values.listeners.client .Values.listeners.interbroker -}}
+  {{- $listeners := list .Values.listeners.interbroker -}}
   {{- range $i := .Values.listeners.extraListeners -}}
   {{- $listeners = append $listeners $i -}}
   {{- end -}}
@@ -485,6 +485,7 @@ Returns the list of advertised listeners, although the advertised address will b
   {{- range $listener := $listeners -}}
   {{- $res = append $res (printf "%s://advertised-address-placeholder:%d" (upper $listener.name) (int $listener.containerPort)) -}}
   {{- end -}}
+  {{- $res = append $res (printf "%s://%s:%d" (upper .Values.listeners.client.name) (.Values.global.domain) (int .Values.listeners.client.containerPort)) -}}
   {{- printf "%s" (join "," $res) -}}
 {{- end -}}
 {{- end -}}
