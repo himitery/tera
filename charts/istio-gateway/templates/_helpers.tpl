@@ -38,3 +38,7 @@ istio.io/rev: {{ . | quote }}
 {{- .Values.serviceAccount.name | default "default" }}
 {{- end }}
 {{- end }}
+
+{{- define "gateway.tlsSecretName" -}}
+{{- .Values.global.tls.secretName | default "tls-secret" -}}
+{{- end -}}

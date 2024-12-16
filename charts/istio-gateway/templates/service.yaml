@@ -54,7 +54,20 @@ spec:
     port: 15017
     targetPort: 15017
 {{- else }}
-{{ .Values.service.ports | toYaml | indent 4 }}
+
+{{- range $idx, $target := .Values.service.ports | default (list) }}
+  - name: {{ $target.name | default (printf "port-%d" $idx) }}
+    port: {{ $target.port }}
+    targetPort: {{ $target.targetPort | default $target.port }}
+    protocol: {{ $target.protocol | default "TCP" }}
+{{- end }}
+{{- range $idx, $target := .Values.global.ports | default (list) }}
+  - name: {{ $target.name | default (printf "port-%d" $idx) }}
+    port: {{ $target.port }}
+    targetPort: {{ $target.targetPort | default $target.port }}
+    protocol: {{ $target.protocol | default "TCP" }}
+{{- end }}
+
 {{- end }}
 {{- if .Values.service.externalIPs }}
   externalIPs: {{- range .Values.service.externalIPs }}

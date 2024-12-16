@@ -7,44 +7,36 @@ spec:
   selector:
     istio: ingress
   servers:
+    {{- range $idx, $target := .Values.service.ports | default (list) }}
     - port:
-        number: 80
-        name: http
-        protocol: HTTP
-      tls:
-        httpsRedirect: true
-      hosts:
-        - "*"
-    - port:
-        number: 443
-        name: https
-        protocol: HTTPS
+        name: {{ $target.name | default (printf "port-%d" $idx) }}
+        number: {{ $target.port }}
+        protocol:
+          {{- if eq (int ($target.port | default 0)) 80 }} HTTP
+          {{- else if eq (int ($target.port | default 0)) 443 }} HTTPS
+          {{- else }} TCP
+          {{- end }}
+      {{- if eq (int ($target.port | default 0)) 443 }}
       tls:
         mode: SIMPLE
-        credentialName: {{ .Values.tls.secretName }}
+        credentialName: {{ include "gateway.tlsSecretName" $ }}
+      {{- else if eq (int ($target.port | default 0)) 80 }}
+      tls:
+        httpsRedirect: true
+      {{- end }}
       hosts:
         - "*"
+    {{- end }}
+
+    {{- range $idx, $target := .Values.global.ports | default (list) }}
     - port:
-        number: 22
-        name: tcp-ssh
-        protocol: TCP
+        name: {{ $target.name | default (printf "port-%d" $idx) }}
+        number: {{ $target.port }}
+        protocol:
+          {{- if eq (int ($target.port | default 0)) 80 }} HTTP
+          {{- else if eq (int ($target.port | default 0)) 443 }} HTTPS
+          {{- else }} TCP
+          {{- end }}
       hosts:
         - "*"
-    - port:
-        number: 5432
-        name: tcp-postgres
-        protocol: TCP
-      hosts:
-        - "*"
-    - port:
-        number: 6379
-        name: tcp-redis
-        protocol: TCP
-      hosts:
-        - "*"
-    - port:
-        number: 9092
-        name: tcp-kafka
-        protocol: TCP
-      hosts:
-        - "*"
+    {{- end }}
