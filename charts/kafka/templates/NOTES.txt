@@ -175,8 +175,8 @@ To connect to your Kafka controller+broker nodes from outside the cluster, follo
 {{- end }}
 
 {{- if eq "NodePort" .Values.externalAccess.controller.service.type }}
-    {{- if .Values.externalAccess.controller.service.domain }}
-    Kafka brokers domain: Use your provided hostname to reach Kafka brokers, {{ .Values.externalAccess.controller.service.domain }}
+    {{- if .Values.global.domain }}
+    Kafka brokers domain: Use your provided hostname to reach Kafka brokers, {{ .Values.global.domain }}
 
     {{- else }}
     Kafka brokers domain: You can get the external node IP from the Kafka configuration file with the following commands (Check the EXTERNAL listener)
@@ -206,7 +206,7 @@ To connect to your Kafka controller+broker nodes from outside the cluster, follo
     Kafka Brokers port: {{ .Values.externalAccess.controller.service.ports.external }}
 
 {{- else if eq "ClusterIP" .Values.externalAccess.controller.service.type }}
-    Kafka brokers domain: Use your provided hostname to reach Kafka brokers, {{ .Values.externalAccess.controller.service.domain }}
+    Kafka brokers domain: Use your provided hostname to reach Kafka brokers, {{ .Values.global.domain }}
 
     Kafka brokers port: You will have a different port for each Kafka broker starting at {{ .Values.externalAccess.controller.service.ports.external }}
 
@@ -218,21 +218,8 @@ To connect to your Kafka controller+broker nodes from outside the cluster, follo
 To connect to your Kafka broker nodes from outside the cluster, follow these instructions:
 
 {{- if eq "NodePort" .Values.externalAccess.broker.service.type }}
-    {{- if .Values.externalAccess.broker.service.domain }}
-    Kafka brokers domain: Use your provided hostname to reach Kafka brokers, {{ .Values.externalAccess.broker.service.domain }}
+    Kafka brokers domain: Use your provided hostname to reach Kafka brokers, {{ .Values.global.domain }}
 
-    {{- else }}
-    Kafka brokers domain: You can get the external node IP from the Kafka configuration file with the following commands (Check the EXTERNAL listener)
-
-        1. Obtain the pod name:
-
-        kubectl get pods --namespace {{ include "common.names.namespace" . }} -l "app.kubernetes.io/name={{ template "kafka.name" . }},app.kubernetes.io/instance={{ .Release.Name }},app.kubernetes.io/component=kafka"
-
-        2. Obtain pod configuration:
-
-        kubectl exec -it KAFKA_POD -- cat /opt/bitnami/kafka/config/server.properties | grep advertised.listeners
-
-    {{- end }}
     Kafka brokers port: You will have a different node port for each Kafka broker. You can get the list of configured node ports using the command below:
 
         echo "$(kubectl get svc --namespace {{ include "common.names.namespace" . }} -l "app.kubernetes.io/name={{ template "kafka.name" . }},app.kubernetes.io/instance={{ .Release.Name }},app.kubernetes.io/component=kafka,pod" -o jsonpath='{.items[*].spec.ports[0].nodePort}' | tr ' ' '\n')"
@@ -249,7 +236,7 @@ To connect to your Kafka broker nodes from outside the cluster, follow these ins
     Kafka Brokers port: {{ .Values.externalAccess.broker.service.ports.external }}
 
 {{- else if eq "ClusterIP" .Values.externalAccess.broker.service.type }}
-    Kafka brokers domain: Use your provided hostname to reach Kafka brokers, {{ .Values.externalAccess.broker.service.domain }}
+    Kafka brokers domain: Use your provided hostname to reach Kafka brokers, {{ .Values.global.domain }}
 
     Kafka brokers port: You will have a different port for each Kafka broker starting at {{ .Values.externalAccess.broker.service.ports.external }}
 

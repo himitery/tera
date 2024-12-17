@@ -214,7 +214,7 @@ sasl:
   ## @param sasl.enabledMechanisms Comma-separated list of allowed SASL mechanisms when SASL listeners are configured. Allowed types: `PLAIN`, `SCRAM-SHA-256`, `SCRAM-SHA-512`, `OAUTHBEARER`
   ## NOTE: At the moment, Kafka Raft mode does not support SCRAM, that is why only PLAIN is configured.
   ##
-  enabledMechanisms: PLAIN,SCRAM-SHA-256,SCRAM-SHA-512
+  enabledMechanisms: PLAIN
   ## @param sasl.interBrokerMechanism SASL mechanism for inter broker communication.
   ##
   interBrokerMechanism: PLAIN
@@ -486,7 +486,7 @@ controller:
   replicaCount: 3
   ## @param controller.controllerOnly If set to true, controller nodes will be deployed as dedicated controllers, instead of controller+broker processes.
   ##
-  controllerOnly: false
+  controllerOnly: true
   ## @param controller.minId Minimal node.id values for controller-eligible nodes. Do not change after first initialization.
   ## Broker-only id increment their ID starting at this minimal value.
   ## We recommend setting this this value high enough, as IDs under this value will be used by controller-elegible nodes
@@ -943,7 +943,7 @@ controller:
 broker:
   ## @param broker.replicaCount Number of Kafka broker-only nodes
   ##
-  replicaCount: 0
+  replicaCount: 6
   ## @param broker.minId Minimal node.id values for broker-only nodes. Do not change after first initialization.
   ## Broker-only id increment their ID starting at this minimal value.
   ## We recommend setting this this value high enough, as IDs under this value will be used by controller-eligible nodes
@@ -1488,7 +1488,7 @@ service:
 externalAccess:
   ## @param externalAccess.enabled Enable Kubernetes external cluster access to Kafka brokers
   ##
-  enabled: false
+  enabled: true
   ## External IPs auto-discovery configuration
   ## An init container is used to auto-detect LB IPs or node ports by querying the K8s API
   ## Note: RBAC might be required
@@ -1580,11 +1580,11 @@ externalAccess:
     service:
       ## @param externalAccess.controller.service.type Kubernetes Service type for external access. It can be NodePort, LoadBalancer or ClusterIP
       ##
-      type: LoadBalancer
+      type: ClusterIP
       ## @param externalAccess.controller.service.ports.external Kafka port used for external access when service type is LoadBalancer
       ##
       ports:
-        external: 9094
+        external: 9092
       ## @param externalAccess.controller.service.loadBalancerClass Kubernetes Service Load Balancer class for external access when service type is LoadBalancer
       ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#load-balancer-class
       ##
@@ -1641,11 +1641,6 @@ externalAccess:
       ## @param externalAccess.controller.service.usePodIPs using the MY_POD_IP address for external access.
       ##
       usePodIPs: false
-      ## @param externalAccess.controller.service.domain Domain or external ip used to configure Kafka external listener when service type is NodePort or ClusterIP
-      ## NodePort: If not specified, the container will try to get the kubernetes node external IP
-      ## ClusterIP: Must be specified, ingress IP or domain where tcp for external ports is configured
-      ##
-      domain: ""
       ## @param externalAccess.controller.service.publishNotReadyAddresses Indicates that any agent which deals with endpoints for this Service should disregard any indications of ready/not-ready
       ## ref: https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/
       ##
@@ -1666,11 +1661,11 @@ externalAccess:
     service:
       ## @param externalAccess.broker.service.type Kubernetes Service type for external access. It can be NodePort, LoadBalancer or ClusterIP
       ##
-      type: LoadBalancer
+      type: ClusterIP
       ## @param externalAccess.broker.service.ports.external Kafka port used for external access when service type is LoadBalancer
       ##
       ports:
-        external: 9094
+        external: 9092
       ## @param externalAccess.broker.service.loadBalancerClass Kubernetes Service Load Balancer class for external access when service type is LoadBalancer
       ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#load-balancer-class
       ##
@@ -1727,11 +1722,6 @@ externalAccess:
       ## @param externalAccess.broker.service.usePodIPs using the MY_POD_IP address for external access.
       ##
       usePodIPs: false
-      ## @param externalAccess.broker.service.domain Domain or external ip used to configure Kafka external listener when service type is NodePort or ClusterIP
-      ## NodePort: If not specified, the container will try to get the kubernetes node external IP
-      ## ClusterIP: Must be specified, ingress IP or domain where tcp for external ports is configured
-      ##
-      domain: ""
       ## @param externalAccess.broker.service.publishNotReadyAddresses Indicates that any agent which deals with endpoints for this Service should disregard any indications of ready/not-ready
       ## ref: https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/
       ##

@@ -9,10 +9,12 @@ spec:
   gateways:
     - {{ .Values.global.gateway.target }}
   tcp:
+  {{- range $idx, $_ := until (int .Values.broker.replicaCount) }}
     - match:
-        - port: 9092
+        - port: {{ add 9092 $idx }}
       route:
         - destination:
-            host: {{ include "common.names.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local
+            host: {{ printf "%s-broker-%d-external" (include "common.names.fullname" $) $idx }}.{{ $.Release.Namespace }}.svc.cluster.local
             port:
               number: 9092
+  {{- end }}

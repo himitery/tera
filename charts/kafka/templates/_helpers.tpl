@@ -729,9 +729,9 @@ Init container definition for Kafka initialization
     - name: EXTERNAL_ACCESS_PORT
       value: {{ $externalAccess.service.ports.external | quote }}
     {{- else if eq $externalAccess.service.type "NodePort" }}
-    {{- if $externalAccess.service.domain }}
+    {{- if .context.Values.global.domain }}
     - name: EXTERNAL_ACCESS_HOST
-      value: {{ $externalAccess.service.domain | quote }}
+      value: {{ .context.Values.global.domain | quote }}
     {{- else if and $externalAccess.service.usePodIPs .context.Values.externalAccess.autoDiscovery.enabled }}
     - name: MY_POD_IP
       valueFrom:
@@ -764,7 +764,7 @@ Init container definition for Kafka initialization
     {{- end }}
     {{- else if eq $externalAccess.service.type "ClusterIP" }}
     - name: EXTERNAL_ACCESS_HOST
-      value: {{ $externalAccess.service.domain | quote }}
+      value: {{ .context.Values.global.domain | quote }}
     - name: EXTERNAL_ACCESS_PORT
       value: {{ $externalAccess.service.ports.external | quote}}
     - name: EXTERNAL_ACCESS_PORT_AUTOINCREMENT
@@ -1057,12 +1057,12 @@ kafka: .Values.externalAccess.broker.service.externalIPs
 
 {{/* Validate values of Kafka - domain must be defined if external service type ClusterIP */}}
 {{- define "kafka.validateValues.domainSpecified" -}}
-{{- if and (eq .Values.externalAccess.controller.service.type "ClusterIP") (empty .Values.externalAccess.controller.service.domain) -}}
-kafka: .Values.externalAccess.controller.service.domain
+{{- if and (eq .Values.externalAccess.controller.service.type "ClusterIP") (empty .Values.global.domain) -}}
+kafka: .Values.global.domain
     Domain must be specified if service type ClusterIP is set for external service
 {{- end -}}
-{{- if and (eq .Values.externalAccess.broker.service.type "ClusterIP") (empty .Values.externalAccess.broker.service.domain) -}}
-kafka: .Values.externalAccess.broker.service.domain
+{{- if and (eq .Values.externalAccess.broker.service.type "ClusterIP") (empty .Values.global.domain) -}}
+kafka: .Values.global.domain
     Domain must be specified if service type ClusterIP is set for external service
 {{- end -}}
 {{- end -}}
