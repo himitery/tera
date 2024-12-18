@@ -175,6 +175,8 @@ configs:
     # -- Annotations to be added to argocd-cm configmap
     annotations: {}
 
+    accounts.tera: login,apiKey
+
     # -- The name of tracking label used by Argo CD for resource pruning
     application.instanceLabelKey: argocd.argoproj.io/instance
 
@@ -336,7 +338,10 @@ configs:
 
     # -- File containing user-defined policies and role definitions.
     # @default -- `''` (See [values.yaml])
-    policy.csv: ''
+    policy.csv: |
+      p, role:admin, *, *, *, allow
+      g, admin, role:admin
+      g, tera, role:admin
     # Policy rules are in the form:
     #  p, subject, resource, action, object, effect
     # Role definitions and bindings are in the form:
