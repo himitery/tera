@@ -22,7 +22,7 @@ spec:
     - port: {{ include "gitlab.shell.port" . | int }}
       targetPort: {{ .Values.service.internalPort }}
       protocol: TCP
-      name: ssh
+      name: tcp-ssh
       {{- if and (eq .Values.service.type "NodePort") .Values.service.nodePort }}
       nodePort: {{ .Values.service.nodePort | int64 }}
       {{- end }}
