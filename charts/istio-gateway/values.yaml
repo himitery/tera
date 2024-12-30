@@ -47,7 +47,7 @@ _internal_defaults_do_not_set:
       port: 15021
       protocol: TCP
       targetPort: 15021
-    - name: ssh
+    - name: tcp-ssh
       port: 22
       protocol: TCP
       targetPort: 22
