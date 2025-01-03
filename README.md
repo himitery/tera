@@ -1,1 +1,1 @@
-# Tera Kubernetes Resoueces
+# Tera Kubernetes Resources
